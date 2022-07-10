@@ -4,7 +4,8 @@ import { Button } from "react-bootstrap";
 import UserContext from "../context/UserContext";
 
 const EditableRow = () => {
-	const { selectedItem, handleDataEdit } = useContext(UserContext);
+	const { selectedItem, handleDataEdit, handleCancel } =
+		useContext(UserContext);
 
 	return (
 		<tr>
@@ -48,7 +49,9 @@ const EditableRow = () => {
 					Save
 				</Button>{" "}
 				&nbsp;
-				<Button size="sm">Cancel</Button>
+				<Button size="sm" onClick={handleCancel}>
+					Cancel
+				</Button>
 			</td>
 		</tr>
 	);

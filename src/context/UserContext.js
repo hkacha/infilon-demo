@@ -69,6 +69,10 @@ export const UserProvider = ({ children }) => {
 		setEditId(null);
 	};
 
+	const handleCancel = () => {
+		setEditId(null);
+	};
+
 	const getData = async () => {
 		const response = await fetch(BASE_URL);
 		const result = await response.json();
@@ -86,6 +90,7 @@ export const UserProvider = ({ children }) => {
 				selectedRow,
 				handleDataEdit,
 				handleSubmit,
+				handleCancel,
 			}}
 		>
 			{children}
