@@ -1,18 +1,27 @@
+import { useContext } from "react";
 import { Button } from "react-bootstrap";
 
-const Item = ({ item: { id, email, first_name, last_name, avatar } }) => {
+import UserContext from "../context/UserContext";
+
+const Item = ({ item }) => {
+	const { handleDelete, selectedRow } = useContext(UserContext);
+
 	return (
 		<tr>
-			<td>{id}</td>
-			<td>{first_name}</td>
-			<td>{last_name}</td>
-			<td>{email}</td>
+			<td>{item.first_name}</td>
+			<td>{item.last_name}</td>
+			<td>{item.email}</td>
 			<td>
-				<img src={avatar} alt={email} width="30" height="30" />
+				<img src={item.avatar} alt={item.email} width="30" height="30" />
 			</td>
 			<td>
-				<Button size="sm">Edit</Button> &nbsp;
-				<Button size="sm">Delete</Button>
+				<Button size="sm" onClick={(e) => selectedRow(e, item)}>
+					Edit
+				</Button>{" "}
+				&nbsp;
+				<Button size="sm" onClick={() => handleDelete(item.id)}>
+					Delete
+				</Button>
 			</td>
 		</tr>
 	);
